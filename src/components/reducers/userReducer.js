@@ -7,12 +7,10 @@ const initialState = {
   email: '',
 };
 
-export const userReducer = (state = initialState, action) => {
+export const userReducer = (state = {}, action) => {
   switch (action.type) {
     case ADD_USER:
-      return{
-        user: state = action.payload
-      };
+      return action.payload
   
     default:
       return state;

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-export const Usuarios = (props) => {
+export const User = (props) => {
   const { item } = useSelector(item => item.cart);
-  const    user   = useSelector( user => user.user.user);
+  const userInfo = useSelector( userInfo => userInfo.user.id);
   // const [userValidate, setUserValidate] = useState(false);
 
   // console.log(item);
-  console.log(user);
+  console.log(userInfo);
   
   console.log(props.stateUser);
-  
+   
   useEffect(() => {
     console.log('LOG ITEM');
   }, [item])
@@ -23,7 +23,7 @@ export const Usuarios = (props) => {
   return (
     <div>
       USUARIOS CARRITO DE COMPRAS CANTIDAD : {item}
-    {props.stateUser && <p>NOMBREEEE: {user.id.age}</p> }
+      {props.stateUser && <p>NOMBREEEE: {userInfo.name}</p> }
       {/* {userValidate ? <p>Hola</p> : <p>No Hola</p>} */}
     </div>
   );

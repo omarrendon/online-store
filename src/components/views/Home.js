@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../actions/cartActions';
 import { addUser } from '../actions/userActions';
-import { Usuarios } from './Usuarios';
+import { Card } from './Card';
+import { User } from './User';
 
 export const Home = () => {
   const [cantidad, setCantidad] = useState(0);
@@ -46,7 +47,7 @@ export const Home = () => {
       </div>
       <div className="">estado de redux : {item}</div>
       
-      <Usuarios stateUser={stateUser}/>
+      <User stateUser={stateUser}/>
 
       <div className="">
         <div className="card">
@@ -57,6 +58,7 @@ export const Home = () => {
           <button onClick={handleAddUser}>Agregar</button>
         </div>
       </div>
+      <Card/>
     </div>
   );
 }

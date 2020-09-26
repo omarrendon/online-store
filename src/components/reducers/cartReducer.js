@@ -1,10 +1,7 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../types/types";
 
 const initialState = {
-  item: 0,
-  user: {
-
-  }
+  item: 0
 };
 
 export const cartReducer = (state = initialState, action) => {
