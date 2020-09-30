@@ -6,40 +6,40 @@ import { Card } from './Card';
 import { User } from './User';
 
 export const Home = () => {
-  const [cantidad, setCantidad] = useState(0);
-  const [userInfo, setUserInfo] = useState({
-    id: 1,
-    name: 'Omar',
-    age: 24,
-    mail: 'omarcr.96@gmail.com'
-  });
-  const [stateUser, setStateUser] = useState(false);
+  // const [cantidad, setCantidad] = useState(0);
+  // const [userInfo, setUserInfo] = useState({
+  //   id: 1,
+  //   name: 'Omar',
+  //   age: 24,
+  //   mail: 'omarcr.96@gmail.com'
+  // });
+  // const [stateUser, setStateUser] = useState(false);
 
-  const dispatch = useDispatch();
-  const { item } = useSelector( item => item.cart);
+  // const dispatch = useDispatch();
+  // const { item } = useSelector( item => item.cart);
   
   
-  const handleAddCart = () => {
-    setCantidad(cantidad + 1)
-    console.log('Cantidad', cantidad);
-    dispatch( addToCart(cantidad));
-  };
+  // const handleAddCart = () => {
+  //   setCantidad(cantidad + 1)
+  //   console.log('Cantidad', cantidad);
+  //   dispatch( addToCart(cantidad));
+  // };
   
-  const handleRemoveCart = () => {
-    setCantidad(cantidad - 1);
-    console.log("Cantidad", cantidad);
-    dispatch( removeFromCart(cantidad));
-  };
+  // const handleRemoveCart = () => {
+  //   setCantidad(cantidad - 1);
+  //   console.log("Cantidad", cantidad);
+  //   dispatch( removeFromCart(cantidad));
+  // };
 
-  const handleAddUser = () => {
-    console.log('Add userInfo');
-    setStateUser(true)
-    dispatch( addUser(userInfo));
-  };
+  // const handleAddUser = () => {
+  //   console.log('Add userInfo');
+  //   setStateUser(true)
+  //   dispatch( addUser(userInfo));
+  // };
 
   return (
     <div>
-      ESTÁS EN EL COMPONENTE HOME
+      {/* ESTÁS EN EL COMPONENTE HOME
       <div className="">
         cantidad : {cantidad}
         <button onClick={handleAddCart}>+</button>
@@ -57,7 +57,7 @@ export const Home = () => {
           <p>mail : {userInfo.mail}</p>
           <button onClick={handleAddUser}>Agregar</button>
         </div>
-      </div>
+      </div> */}
       <Card/>
     </div>
   );
