@@ -22,9 +22,8 @@ export const User = (props) => {
 
   return (
     <div>
-      USUARIOS CARRITO DE COMPRAS CANTIDAD : {item}
-      {props.stateUser && <p>NOMBREEEE: {userInfo.name}</p> }
-      {/* {userValidate ? <p>Hola</p> : <p>No Hola</p>} */}
+      USUARIOS CARRITO DE COMPRAS CANTIDAD 
+      
     </div>
   );
 }

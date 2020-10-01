@@ -1,19 +1,18 @@
 import { ADD_TO_CART, REMOVE_FROM_CART } from "../types/types";
 
-const initialState = {
-  item: {
+const initialState = [
+  {
     id: null,
-    name: "sss",
+    name: "",
     price: ""
   }
-};
+];
 
-export const cartReducer = (state = initialState, action) => {
+export const cartReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      return {
-        item: action.payload
-      };
+      return [...state, action.payload];
+
 
     // case REMOVE_FROM_CART:
     //   return {

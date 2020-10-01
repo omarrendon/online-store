@@ -8,24 +8,24 @@ import { products } from "../data";
 export const Card = () => {
   const dispatch = useDispatch();
 
-  const [productSelect, setProductSelect] = useState({
+  const [productSelect, setProductSelect] = useState([{
     id: null,
     name: "",
     price: null
-  });
+  }]);
 
   useEffect(() => {
-    console.log(productSelect);
-    dispatch(addToCart(productSelect));
-  }, [productSelect, dispatch]);
+    console.log(productSelect[0]);
+    dispatch(addToCart(productSelect[0]));
+  }, [productSelect]);
 
   const handleAddToCart = (id, name, price) => {
     console.log("LOG 1", id, name, price);
-    setProductSelect({
+    setProductSelect([{
       id,
       name,
       price
-    });
+    }]);
   };
 
   return (
