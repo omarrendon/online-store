@@ -6,12 +6,7 @@ export const Cart = () => {
   const {item} = useSelector(item => item.cart);
   const dispatch = useDispatch();
 
-  // const producto = item[0].item[1];
   console.log(item);
-
-  // useEffect(() => {
-  //   dispatch(getProducts());
-  // }, [dispatch]);
 
   const handleDeleteProduct = ( id ) => {
     dispatch( removeFromCart(id))
