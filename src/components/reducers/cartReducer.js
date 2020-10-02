@@ -1,23 +1,25 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../types/types";
+import { ADD_TO_CART, GET_PRODUCTS, REMOVE_FROM_CART } from "../types/types";
 
-const initialState = [
-  {
-    id: null,
-    name: "",
-    price: ""
-  }
-];
+const initialState = {
+  item: []
+};
 
-export const cartReducer = (state = [], action) => {
+export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
-      return [...state, action.payload];
+      return {
+        ...state,
+        item: [...state.item, action.payload]
+      };
 
+    case REMOVE_FROM_CART:
+      return {
+        ...state,
+        item: state.item.filter( product => product.id !== action.payload)
+      };
 
-    // case REMOVE_FROM_CART:
-    //   return {
-    //     item: action.payload - 1
-    //   };
+    case GET_PRODUCTS:
+      return [...state];
 
     default:
       return state;

@@ -1,10 +1,21 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProducts, removeFromCart } from "../actions/cartActions";
 
 export const Cart = () => {
-  const item = useSelector(item => item.cart);
+  const {item} = useSelector(item => item.cart);
+  const dispatch = useDispatch();
 
+  // const producto = item[0].item[1];
   console.log(item);
+
+  // useEffect(() => {
+  //   dispatch(getProducts());
+  // }, [dispatch]);
+
+  const handleDeleteProduct = ( id ) => {
+    dispatch( removeFromCart(id))
+  };
 
   return (
     <div>
@@ -19,6 +30,7 @@ export const Cart = () => {
               <li>ID: {product.id}</li>
               <li>NAME:{product.name}</li>
               <li>PRICE: ${product.price}</li>
+              <button onClick={ () => handleDeleteProduct(product.id)}>Delete</button>
               <hr/>
             </div>
           )}
