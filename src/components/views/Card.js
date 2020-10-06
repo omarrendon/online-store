@@ -9,10 +9,11 @@ import { products } from "../data";
 export const Card = () => {
   const dispatch = useDispatch();
 
-  const [productSelect, setProductSelect] = useState({
+  const [productSelected, setProductSelected] = useState({
     id: null,
     name: "",
-    price: null
+    price: null,
+    amount: null
   });
 
   const [favoriteSelect, setFavoriteSelect] = useState({
@@ -22,20 +23,21 @@ export const Card = () => {
   });
 
   useEffect(() => {
-    console.log(productSelect);
-    dispatch(addToCart(productSelect));
-  }, [productSelect]);
+    console.log('PRODUCT TO DISPATCH', productSelected);
+    dispatch(addToCart(productSelected, products));
+  }, [productSelected]);
 
   useEffect(() => {
     dispatch(addToFavorite(favoriteSelect));
   }, [favoriteSelect])
 
   const handleAddToCart = (id, name, price) => {
-    console.log("LOG ADD TO CART", id, name, price);
-    setProductSelect({
+    console.log("PRODUCT SELECTED", id, name, price);
+    setProductSelected({
       id,
       name,
-      price
+      price,
+      amount: 0
     });
   };
 
@@ -49,31 +51,34 @@ export const Card = () => {
   };
 
   return (
-    <div>
-      {products.map(product => (
-        <div className="card" key={product.id}>
-          <hr />
-          <p>Name: {product.name}</p>
-          <p>Description: {product.description}</p>
-          <p>Price: ${product.price}</p>
-          <p>Quantity: {product.quantity}</p>
-          <button
-            onClick={() =>
-              handleAddToCart(product.id, product.name, product.price)
-            }
-          >
-            Add
-          </button>
-          <button
-            onClick={() =>
-              handleLikeProduct(product.id, product.name, product.price)
-            }
-          >
-            Like
-          </button>
-          <hr />
+    <div className="">
+        <div className="">
+          <h1>PRODUCTS</h1>
         </div>
-      ))}
+        {products.map(product => (
+          <div className="card" key={product.id}>
+            <hr />
+            <p>Name: {product.name}</p>
+            <p>Description: {product.description}</p>
+            <p>Price: ${product.price}</p>
+            <p>Quantity: {product.quantity}</p>
+            <button
+              onClick={() =>
+                handleAddToCart(product.id, product.name, product.price)
+              }
+            >
+              Add
+            </button>
+            <button
+              onClick={() =>
+                handleLikeProduct(product.id, product.name, product.price)
+              }
+            >
+              Like
+            </button>
+            <hr />
+          </div>
+        ))}
     </div>
   );
 };
