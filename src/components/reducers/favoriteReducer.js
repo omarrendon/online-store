@@ -18,7 +18,6 @@ export const favoriteReducer = ( state = initialSate, action) => {
         favorite: state.favorite.filter( product => product.id !== action.payload)
       }
 
-
     default:
       return state;
   }

@@ -9,12 +9,7 @@ import { products } from "../data";
 export const Card = () => {
   const dispatch = useDispatch();
 
-  const [productSelected, setProductSelected] = useState({
-    id: null,
-    name: "",
-    price: null,
-    amount: null
-  });
+  const [productSelected, setProductSelected] = useState({id:null, name:'', price: null, amount:0});
 
   const [favoriteSelect, setFavoriteSelect] = useState({
     id: null,
@@ -23,8 +18,8 @@ export const Card = () => {
   });
 
   useEffect(() => {
-    console.log('PRODUCT TO DISPATCH', productSelected);
-    dispatch(addToCart(productSelected, products));
+    dispatch(addToCart(productSelected, products))
+    console.log('PRODUCT SELECTED', productSelected)
   }, [productSelected]);
 
   useEffect(() => {
@@ -32,7 +27,6 @@ export const Card = () => {
   }, [favoriteSelect])
 
   const handleAddToCart = (id, name, price) => {
-    console.log("PRODUCT SELECTED", id, name, price);
     setProductSelected({
       id,
       name,
@@ -42,7 +36,6 @@ export const Card = () => {
   };
 
   const handleLikeProduct = (id, name, price) => {
-    console.log("LOG ADD TO FAVORITE", id, name, price);
     setFavoriteSelect({
       id,
       name,
@@ -64,7 +57,7 @@ export const Card = () => {
             <p>Quantity: {product.quantity}</p>
             <button
               onClick={() =>
-                handleAddToCart(product.id, product.name, product.price)
+                handleAddToCart(product)
               }
             >
               Add
