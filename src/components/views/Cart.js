@@ -1,16 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts, removeFromCart } from "../actions/cartActions";
+
+import { removeFromCart } from "../actions/cartActions";
 
 export const Cart = () => {
   const { item } = useSelector(item => item.cart);
   const dispatch = useDispatch();
 
-  const itemMap = item[0];
-
-  console.log(item[0]);
-
-  const handleDeleteProduct = id => {
+  const handleDeleteProduct = (id) => {
     dispatch(removeFromCart(id));
   };
 
@@ -21,21 +18,17 @@ export const Cart = () => {
       </div>
 
       <div className="">
-        {item[0] &&
-          item[0].map(product => (
-            <div className="" key={product.id}>
-              {product.amount >= 1 ? (
-                <div className="">
-                  <p>NAME: {product.name}</p>
-                  <p>PRICE: ${product.price}</p>
-                  <p>AMOUNT: {product.amount}</p>
-                  <hr />
-                </div>
-              ) : (
-                ""
-              )}
-            </div>
-          ))}
+        {item.map(product => (
+          <div className="" key={product.id}>
+              <div className="">
+                <p>NAME: {product.name}</p>
+                <p>PRICE: ${product.price}</p>
+                <p>AMOUNT: {product.amount}</p>
+                <button onClick={ () => handleDeleteProduct(product.id)}>Delete</button>
+                <hr />
+              </div> 
+          </div>
+        ))}
       </div>
     </div>
   );

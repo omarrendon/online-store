@@ -1,44 +1,33 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { addToCart } from "../actions/cartActions";
+import { addToCart, getProducts } from "../actions/cartActions";
 import { addToFavorite } from "../actions/favoriteActions";
 import { products } from "../data";
 
 export const Card = () => {
   const dispatch = useDispatch();
 
-  const [productSelected, setProductSelected] = useState({
-    id: null,
-    name: "",
-    price: null,
-    amount: null
-  });
-
+  const [productSelected, setProductSelected] = useState({});
   const [favoriteSelect, setFavoriteSelect] = useState({
     id: null,
     name: '',
     price: null,
   });
-
+  
   useEffect(() => {
     console.log('PRODUCT TO DISPATCH', productSelected);
-    dispatch(addToCart(productSelected, products));
+    dispatch(addToCart(productSelected));
   }, [productSelected]);
-
+   
   useEffect(() => {
     dispatch(addToFavorite(favoriteSelect));
   }, [favoriteSelect])
 
-  const handleAddToCart = (id, name, price) => {
-    console.log("PRODUCT SELECTED", id, name, price);
-    setProductSelected({
-      id,
-      name,
-      price,
-      amount: 0
-    });
+  const handleAddToCart = (id) => {
+    console.log("PRODUCT SELECTED", id);
+    setProductSelected({id});   
   };
 
   const handleLikeProduct = (id, name, price) => {
@@ -64,7 +53,7 @@ export const Card = () => {
             <p>Quantity: {product.quantity}</p>
             <button
               onClick={() =>
-                handleAddToCart(product.id, product.name, product.price)
+                handleAddToCart(product.id)
               }
             >
               Add

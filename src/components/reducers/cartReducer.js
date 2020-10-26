@@ -1,4 +1,5 @@
-import { ADD_TO_CART, GET_PRODUCTS, REMOVE_FROM_CART } from "../types/types";
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../types/types";
+import { products } from "../data";
 
 const initialState = {
   item: []
@@ -7,19 +8,31 @@ const initialState = {
 export const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TO_CART:
+      let productIn = []
+      
+      const items = products.map(product => {
+        if(product.id === action.payload.id) {
+          product = { ...product, amount: (product.amount += 1) };
+        }
+
+        if(product.amount >= 1) {
+          productIn.push({...product})
+          console.log('PRODUCT >= 1', productIn);
+        }
+        return productIn;
+      });
+
       return {
         ...state,
-        item: [ action.payload]
+        item: productIn
       };
 
     case REMOVE_FROM_CART:
       return {
-        ...state,
+        ...state.item,
+        // item: [action.payload]
         item: state.item.filter(product => product.id !== action.payload)
       };
-
-    case GET_PRODUCTS:
-      return [...state];
 
     default:
       return state;
