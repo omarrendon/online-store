@@ -1,11 +1,11 @@
 import { ADD_USER } from '../types/types';
 
-const initialState = {
-  id: null,
-  name: '',
-  age: null,
-  email: '',
-};
+// const initialState = {
+//   id: null,
+//   name: '',
+//   age: null,
+//   email: '',
+// };
 
 export const userReducer = (state = {}, action) => {
   switch (action.type) {

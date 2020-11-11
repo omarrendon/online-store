@@ -11,7 +11,7 @@ export const cartReducer = (state = initialState, action) => {
     case ADD_TO_CART:
       let productIn = []
       
-      const items = products.map(product => {
+      products.map(product => {
         if(product.id === action.payload.id) {
           product = { ...product, amount: (product.amount += 1) };
         }
@@ -31,7 +31,6 @@ export const cartReducer = (state = initialState, action) => {
     case REMOVE_FROM_CART:
       return {
         ...state.item,
-        // item: [action.payload]
         item: state.item.filter(product => product.id !== action.payload)
       };
 

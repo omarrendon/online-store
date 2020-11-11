@@ -5,11 +5,12 @@ import { removeFromFavorite } from '../actions/favoriteActions';
 export const Favorites = () => {
   const dispatch = useDispatch();
   const { favorite } = useSelector( product => product.favorite);
-  console.log(favorite);
 
+  // console.log(favorite);
+  
   const handleDislike = (id) => {
-    console.log(id);
     dispatch( removeFromFavorite(id));
+    console.log(id);
   };
   
   return (
@@ -17,7 +18,6 @@ export const Favorites = () => {
       <div className="">
         {favorite.map(like => (
           <div className="" key={like.id}>
-            {like.id && (
               <div className="">
                 <li>ID: {like.id}</li>
                 <li>NAME:{like.name}</li>
@@ -25,7 +25,6 @@ export const Favorites = () => {
                 <button onClick={ () => handleDislike(like.id)}>Dislike</button>
                 <hr />
               </div>
-            )}
           </div>
         ))}
       </div>

@@ -5,7 +5,8 @@ export const products = [
            description: "",
            price: 29.99,
            quantity: 10,
-           amount: 0
+           amount: 0,
+           favorite: false
          },
          {
            id: 2,
@@ -13,7 +14,8 @@ export const products = [
            description: "",
            price: 40.0,
            quantity: 6,
-           amount: 0
+           amount: 0,
+           favorite: false
          },
          {
            id: 3,
@@ -21,7 +23,8 @@ export const products = [
            description: "",
            price: 60.0,
            quantity: 5,
-           amount: 0
+           amount: 0,
+           favorite: false
          },
          {
            id: 4,
@@ -29,7 +32,8 @@ export const products = [
            description: "",
            price: 35.0,
            quantity: 12,
-           amount: 0
+           amount: 0,
+           favorite: false
          },
          {
            id: 5,
@@ -37,7 +41,8 @@ export const products = [
            description: "",
            price: 19.99,
            quantity: 8,
-           amount: 0
+           amount: 0,
+           favorite: false
          },
          {
            id: 6,
@@ -45,7 +50,8 @@ export const products = [
            description: "",
            price: 80.99,
            quantity: 3,
-           amount: 0
+           amount: 0,
+           favorite: false
          },
          {
            id: 7,
@@ -53,7 +59,8 @@ export const products = [
            description: "",
            price: 100.0,
            quantity: 6,
-           amount: 0
+           amount: 0,
+           favorite: false
          },
          {
            id: 8,
@@ -61,7 +68,8 @@ export const products = [
            description: "",
            price: 15.0,
            quantity: 6,
-           amount: 0
+           amount: 0,
+           favorite: false
          },
          {
            id: 9,
@@ -69,7 +77,8 @@ export const products = [
            description: "",
            price: 200.0,
            quantity: 3,
-           amount: 0
+           amount: 0,
+           favorite: false
          },
          {
            id: 10,
@@ -77,6 +86,7 @@ export const products = [
            description: "",
            price: 99.99,
            quantity: 9,
-           amount: 0
+           amount: 0,
+           favorite: false
          }
        ];

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import { addToCart, getProducts } from "../actions/cartActions";
+import { addToCart } from "../actions/cartActions";
 import { addToFavorite } from "../actions/favoriteActions";
 import { products } from "../data";
 
@@ -10,11 +10,7 @@ export const Card = () => {
   const dispatch = useDispatch();
 
   const [productSelected, setProductSelected] = useState({});
-  const [favoriteSelect, setFavoriteSelect] = useState({
-    id: null,
-    name: '',
-    price: null,
-  });
+  const [favoriteSelect, setFavoriteSelect] = useState({});
   
   useEffect(() => {
     console.log('PRODUCT TO DISPATCH', productSelected);
@@ -23,19 +19,15 @@ export const Card = () => {
    
   useEffect(() => {
     dispatch(addToFavorite(favoriteSelect));
-  }, [favoriteSelect])
+  }, [favoriteSelect]);
 
   const handleAddToCart = (id) => {
     console.log("PRODUCT SELECTED", id);
     setProductSelected({id});   
   };
 
-  const handleLikeProduct = (id, name, price) => {
-    setFavoriteSelect({
-      id,
-      name,
-      price
-    });
+  const handleLikeProduct = (id) => {
+    setFavoriteSelect( id );
   };
 
   return (
@@ -59,7 +51,7 @@ export const Card = () => {
             </button>
             <button
               onClick={() =>
-                handleLikeProduct(product.id, product.name, product.price)
+                handleLikeProduct(product.id)
               }
             >
               Like
