@@ -25,23 +25,17 @@ export const favoriteReducer = (state = initialSate, action) => {
       };
 
     case REMOVE_FROM_FAVORITE:
-      // console.log(state.favorite);
       console.log(action.payload);
       state.favorite.map(product => {
         if (product.id === action.payload) {
           product = { ...product, favorite: (product.favorite = false) };
         }
         if (product.favorite === false) {
-          // return state.favorite.filter(fav => fav.id !== action.payload);
           likedProducts = state.favorite.filter(fav => fav.id !== action.payload);
         }
       });
 
-      console.log(state.favorite);
-// checar el useeffect por que se vuelve a renderizar y eso hace que tome de nuevo el ultimo valor eliminado
       return {
-        // ...state.favorite,
-        // favorite: [...state.favorite]
         favorite: likedProducts
       };
 
