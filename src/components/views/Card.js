@@ -11,54 +11,43 @@ export const Card = () => {
 
   const [productSelected, setProductSelected] = useState({});
   const [favoriteSelect, setFavoriteSelect] = useState({});
-  
+
   useEffect(() => {
-    console.log('PRODUCT TO DISPATCH', productSelected);
+    console.log("PRODUCT TO DISPATCH", productSelected);
     dispatch(addToCart(productSelected));
   }, [productSelected]);
-   
-  useEffect(() => {
-    dispatch(addToFavorite(favoriteSelect));
-  }, [favoriteSelect]);
 
   const handleAddToCart = (id) => {
     console.log("PRODUCT SELECTED", id);
-    setProductSelected({id});   
+    setProductSelected({ id });
   };
 
+  useEffect(() => {
+    dispatch(addToFavorite(favoriteSelect));
+    // console.log(favoriteSelect);
+  }, [favoriteSelect]);
+
   const handleLikeProduct = (id) => {
-    setFavoriteSelect( id );
+    setFavoriteSelect(id);
   };
 
   return (
     <div className="">
-        <div className="">
-          <h1>PRODUCTS</h1>
+      <div className="">
+        <h1>PRODUCTS</h1>
+      </div>
+      {products.map((product) => (
+        <div className="card" key={product.id}>
+          <hr />
+          <p>Name: {product.name}</p>
+          <p>Description: {product.description}</p>
+          <p>Price: ${product.price}</p>
+          <p>Quantity: {product.quantity}</p>
+          <button onClick={() => handleAddToCart(product.id)}>Add</button>
+          <button onClick={() => handleLikeProduct(product.id)}>Like</button>
+          <hr />
         </div>
-        {products.map(product => (
-          <div className="card" key={product.id}>
-            <hr />
-            <p>Name: {product.name}</p>
-            <p>Description: {product.description}</p>
-            <p>Price: ${product.price}</p>
-            <p>Quantity: {product.quantity}</p>
-            <button
-              onClick={() =>
-                handleAddToCart(product.id)
-              }
-            >
-              Add
-            </button>
-            <button
-              onClick={() =>
-                handleLikeProduct(product.id)
-              }
-            >
-              Like
-            </button>
-            <hr />
-          </div>
-        ))}
+      ))}
     </div>
   );
 };
