@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 
 import { addToCart } from "../actions/cartActions";
@@ -9,26 +8,12 @@ import { products } from "../data";
 export const Card = () => {
   const dispatch = useDispatch();
 
-  const [productSelected, setProductSelected] = useState({});
-  const [favoriteSelect, setFavoriteSelect] = useState({});
-
-  useEffect(() => {
-    console.log("PRODUCT TO DISPATCH", productSelected);
-    dispatch(addToCart(productSelected));
-  }, [productSelected]);
-
   const handleAddToCart = (id) => {
-    console.log("PRODUCT SELECTED", id);
-    setProductSelected({ id });
+    dispatch(addToCart(id));
   };
 
-  useEffect(() => {
-    dispatch(addToFavorite(favoriteSelect));
-    // console.log(favoriteSelect);
-  }, [favoriteSelect]);
-
   const handleLikeProduct = (id) => {
-    setFavoriteSelect(id);
+    dispatch(addToFavorite(id));
   };
 
   return (

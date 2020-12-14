@@ -6,20 +6,19 @@ const initialState = {
 };
 
 export const cartReducer = (state = initialState, action) => {
+  let productIn = [];
+  let productOut = [];
+
   switch (action.type) {
     case ADD_TO_CART:
-      let productIn = [];
-
       products.map((product) => {
-        if (product.id === action.payload.id) {
+        if (product.id === action.payload) {
           product = { ...product, amount: (product.amount += 1) };
         }
 
         if (product.amount >= 1) {
-          productIn.push({ ...product });
-          console.log("PRODUCT >= 1", productIn);
+          productIn = [product, ...productIn];
         }
-        return productIn;
       });
 
       return {
@@ -28,9 +27,11 @@ export const cartReducer = (state = initialState, action) => {
       };
 
     case REMOVE_FROM_CART:
+      productOut = [...state.item];
+
       return {
-        ...state.item,
-        item: state.item.filter((product) => product.id !== action.payload),
+        ...state,
+        item: productOut.filter((product) => product.id !== action.payload),
       };
 
     default:
