@@ -1,13 +1,13 @@
-import React from 'react';
+import React from "react";
 
-import { Card } from './Card';
+import { Card } from "./Card";
+
+import "../styles/card.css";
 
 export const Home = () => {
-
   return (
-    <>
-      <Card/>
-    </>
-   
+    <div className="home">
+      <Card />
+    </div>
   );
-}
+};
