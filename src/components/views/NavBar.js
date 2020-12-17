@@ -1,34 +1,32 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "../styles/navbar.css";
 
 export const NavBar = () => {
   return (
-    <div>
-      <NavLink
-        activeClassName="active"
-        className="nav-item nav-link"
-        exact
-        to="/"
-      >
-        Home
-      </NavLink>
+    <header className="navbar">
+      <nav className="navbar-nav">
+        <NavLink activeClassName="active" className="navbar-link" exact to="/">
+          Home
+        </NavLink>
 
-      <NavLink
-        activeClassName="active"
-        className="nav-item nav-link"
-        exact
-        to="/favorites"
-      >
-        Favorites
-      </NavLink>
-      <NavLink
-        activeClassName="active"
-        className="nav-item nav-link"
-        exact
-        to="/my-cart"
-      >
-        Cart
-      </NavLink>
-    </div>
+        <NavLink
+          activeClassName="active"
+          className="navbar-link"
+          exact
+          to="/favorites"
+        >
+          Favorites
+        </NavLink>
+        <NavLink
+          activeClassName="active"
+          className="navbar-link navbar-cart"
+          exact
+          to="/my-cart"
+        >
+          Cart
+        </NavLink>
+      </nav>
+    </header>
   );
 };
