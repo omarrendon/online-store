@@ -12,15 +12,20 @@ export const Favorites = () => {
 
   return (
     <div>
-      <div className="">
+      <div className="card card-favorite">
         {favorite.map((like) => (
-          <div className="" key={like.id}>
-            <div className="">
-              <li>ID: {like.id}</li>
-              <li>NAME:{like.name}</li>
-              <li>PRICE: ${like.price}</li>
-              <button onClick={() => handleDislike(like.id)}>Dislike</button>
-              <hr />
+          <div className="card-container" key={like.id}>
+            <img src={like.image} className="card-image" />
+            {/* <span>ID: {like.id}</span> */}
+            <span>{like.name}</span>
+            <span>PRICE: ${like.price}</span>
+            <div className="card-box-button">
+              <button
+                className="card-button Favorite"
+                onClick={() => handleDislike(like.id)}
+              >
+                Dislike
+              </button>
             </div>
           </div>
         ))}
